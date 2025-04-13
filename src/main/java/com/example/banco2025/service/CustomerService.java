@@ -6,6 +6,7 @@ import com.example.banco2025.repository.CustomerRepository;
 import com.example.banco2025.mapper.CustomerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.List;
 
@@ -35,4 +36,13 @@ public class CustomerService {
         return customerMapper.customerToCustomerDTO(customerRepository.save(customer));
     }
 
+    public CustomerDTO updateCustomer(Long id, CustomerDTO customerDTO){
+        Customer customer = customerMapper.customerDTOToCustomer(customerDTO);
+        customer.setId(id);
+        return customerMapper.customerToCustomerDTO(customerRepository.save(customer));
+    }
+
+    public void deleteCustomer(Long id){
+        customerRepository.deleteById(id);
+    }
 }

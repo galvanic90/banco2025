@@ -1,28 +1,22 @@
 package com.example.banco2025.DTO;
+import jakarta.validation.constraints.NotNull;
 
 public class CustomerDTO {
-    private Long id;
+    @NotNull
     private String firstName;
+    @NotNull
     private String lastName;
+    @NotNull
     private String accountNumber;
     private Double balance;
 
     public CustomerDTO() {}
 
-    public CustomerDTO(Long id, String firstName, String lastName, String accountNumber, Double balance) {
-        this.id = id;
+    public CustomerDTO(String firstName, String lastName, String accountNumber, Double balance) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.accountNumber = accountNumber;
         this.balance = balance;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public String getFirstName() {
