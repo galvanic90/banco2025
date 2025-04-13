@@ -49,6 +49,7 @@ public class TransactionService {
         Transaction transaction = new Transaction();
         transaction.setSenderAccountNumber(sender.getAccountNumber());
         transaction.setReceiverAccountNumber(receiver.getAccountNumber());
+        transaction.setTimestamp(transactionDTO.getTimestamp());
         transaction.setAmount(transactionDTO.getAmount());
         transaction= transactionRepository.save(transaction);
 
@@ -67,6 +68,7 @@ public class TransactionService {
             TransactionDTO dto = new TransactionDTO();
             dto.setSenderAccountNumber(transaction.getSenderAccountNumber());
             dto.setReceiverAccountNumber(transaction.getReceiverAccountNumber());
+            dto.setTimestamp(transaction.getTimestamp());
             dto.setAmount(transaction.getAmount());
             return dto;
         }).collect(Collectors.toList());
